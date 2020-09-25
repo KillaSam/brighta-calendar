@@ -408,7 +408,11 @@ export default {
             this.showMonth();            
             this.flagFirst = 1;
             this.flagLast = new Date(this.currYear, this.currMonth+1, 0).getDate();
-            document.getElementById('day_'+this.flagLast).className = 'day-choose';        
+            document.getElementById('day_'+this.flagLast).className = 'day-choose';   
+            for (let i = this.flagLast-1; i>this.flagFirst; i--){
+                document.getElementById('day_'+i).className = 'day-between';
+            }     
+            document.getElementById('day_1').className = 'day-choose';   
         }
     }
 }
