@@ -400,22 +400,15 @@ export default {
         thisMonth(){            
             if(document.querySelectorAll('.day-choose').length !== 0){
                 this.cleanDate();
-            }
-            
+            }            
             this.flagFirst = 0;
             this.flagLast = 0;
             this.currMonth = this.currDate.getMonth();
             this.currYear = this.currDate.getFullYear();
-            this.showMonth();
-            this.showMonth();
+            this.showMonth();            
             this.flagFirst = 1;
             this.flagLast = new Date(this.currYear, this.currMonth+1, 0).getDate();
-            console.log(this.flagLast, this.flagFirst);
-            document.getElementById('day_'+this.flagLast.toString()).className = 'day-choose';
-            document.getElementById('day_'+this.flagLast).className = 'day-choose';
-            console.log(document.getElementById('day_'+this.flagLast).className === document.getElementById('day_30').className)
-            console.log('day_'+this.flagLast);
-            
+            document.getElementById('day_'+this.flagLast).className = 'day-choose';        
         }
     }
 }
