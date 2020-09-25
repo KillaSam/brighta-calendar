@@ -1,0 +1,19 @@
+.day1{
+    background-color: blue;
+    color: #ffffff;
+}
+
+
+.day{
+    &:hover{
+        background-color: red;
+    }
+}
+
+.day-choose{
+    background-color: yellow;
+}
+
+.day-between{
+    background-color: burlywood;
+}
