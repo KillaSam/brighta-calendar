@@ -458,18 +458,15 @@ export default {
             this.isDisabled = false;
             if(this.currDate.getMonth() === 0){
                 this.currMonth = 11;
-                this.currYear -= 1;
-                if(document.querySelectorAll('.day-choose').length !== 0){
-                    this.cleanDate();
-                }
+                this.currYear = this.currDate.getFullYear()-1;
+                this.cleanDate();
                 this.showMonth();
                 this.flagFirst = 1;
                 this.flagLast = 31;                                 
             } else {
-                this.currMonth -= 1;
-                if(document.querySelectorAll('.day-choose').length !== 0){
-                    this.cleanDate();
-                }
+                this.currMonth = this.currDate.getMonth()-1;
+                this.currYear = this.currDate.getFullYear();
+                this.cleanDate();
                 this.showMonth();                 
                 this.flagFirst = 1;
                 this.flagLast = this.countDaysInMonth;                
