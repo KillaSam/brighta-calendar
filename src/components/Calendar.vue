@@ -1,97 +1,135 @@
 <template>
-    <table class="one-calendar">
-        <thead>            
-            <tr>
-                <td class="arrow" @click="prevMonth()">‹</td>
-                <td colspan="5" class="name-month">
-                    <span id="month-cal">{{month[currMonth]}}</span> 
-                    {{currYear}}
-                </td>
-                <td class="arrow" @click="nextMonth()">›</td>
-            </tr>
-        </thead>
-        <tbody>
-            <tr >
-                <td v-for="day in firstWeek" 
-                    :class="day.disabled ? disDay : trueDay"
-                    :id="'day_'+day.id"
-                    :key="day.id" 
-                    @click="choosen"
-                    >
-                    {{day.numOfMonth}}
-                </td>
-            </tr>
-            <tr>
-                <td class="day"
-                    v-for="day in secondWeek" 
-                    :id="'day_'+day.id"
-                    :key="day.id" 
-                    @click="choosen"
-                    >
-                    {{day.numOfMonth}}
-                </td>
-            </tr>
-            <tr>
-                <td class="day"
-                    v-for="day in thirdWeek" 
-                    :id="'day_'+day.id"
-                    :key="day.id" 
-                    @click="choosen" 
-                    >
-                    {{day.numOfMonth}}
-                </td>
-            </tr>
-            <tr>
-                <td class="day"
-                    v-for="day in fourthWeek" 
-                    :id="'day_'+day.id"
-                    :key="day.id" 
-                    @click="choosen" 
-                    >
-                    {{day.numOfMonth}}
-                </td>
-            </tr>
-            <tr>
-                <td v-for="day in fifthWeek" 
-                    :class="day.disabled ? disDay : trueDay"
-                    :id="'day_'+day.id"
-                    :key="day.id" 
-                    @click="choosen" 
-                    > 
-                    {{day.numOfMonth}}
-                </td>
-            </tr>
-            <tr> 
-                <td v-for="day in sixWeek" 
-                    :class="day.disabled ? disDay : trueDay"
-                    :id="'day_'+day.id"
-                    :key="day.id" 
-                    @click="choosen" 
-                    >
-                    {{day.numOfMonth}}
-                </td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <tr>
-                <td>M</td>
-                <td>T</td>
-                <td>W</td>
-                <td>T</td>
-                <td>F</td>
-                <td>S</td>                
-                <td>S</td>
-            </tr>
-            <tr>
-                <td><button @click="chooseToday">Today</button></td>
-                <td><button @click="chooseYesterday">Yesterday</button></td>
-                <td><button >7days</button></td>
-                <td><button >30days</button></td>
-                <td><button @click="thisMonth" >This month</button></td>
-                <td><button >Last Month</button></td>
-            </tr>
-        </tfoot>
-    </table>
+    <div class="calendar-wrapper">
+        <div class="calendar-main">
+            <div class="filters">    
+                <div class="radio-wrapper first">
+                    <input type="radio" name="radio" id="radio1" @click="startAgain"> 
+                    <label for="radio1">Весь срок</label>       
+                </div>
+                <div class="radio-wrapper">
+                    <input type="radio" name="radio" id="radio2" @click="chooseToday" checked>   
+                    <label for="radio2">Сегодня</label>         
+                </div>
+                <div class="radio-wrapper">
+                    <input type="radio" name="radio" id="radio3" @click="chooseYesterday">           
+                    <label for="radio3">Вчера</label>      
+                     
+                </div>
+                <div class="radio-wrapper">
+                    <input type="radio" name="radio" id="radio4" @click="last7Days">   
+                    <label for="radio4">Последние 7 дней</label>         
+                </div>
+                <div class="radio-wrapper">
+                    <input type="radio" name="radio" id="radio5" @click="last30Days">   
+                    <label for="radio5">Последние 30 дней</label>         
+                </div>
+                <div class="radio-wrapper">
+                    <input type="radio" name="radio" id="radio6" @click="thisMonth">           
+                    <label for="radio6">В этом месяце</label>       
+                </div>
+                <div class="radio-wrapper">
+                    <input type="radio" name="radio" id="radio7" @click="lastMonth">           
+                    <label for="radio7">Прошлый месяц</label>       
+                </div>
+            </div>
+            <table class="one-calendar">
+                <thead class="header-wrapper">            
+                    <tr class="header">
+                        <td class="arrow" @click="prevMonth()"><div class="circle"><p class="sign">‹</p></div></td>
+                        <td colspan="5" valign="middle" class="name-month">
+                            <span id="month-cal">{{month[currMonth]}}</span>,  
+                            {{currYear}}
+                        </td>
+                        <td class="arrow" @click="nextMonth()"><div class="circle"><p class="sign">›</p></div></td>
+                    </tr>
+                </thead>
+                <tbody class="calendar-numbers">
+                    <tr class="day-names">
+                        <td class="day-names__name">Пн</td>
+                        <td class="day-names__name">Вт</td>
+                        <td class="day-names__name">Ср</td>
+                        <td class="day-names__name">Чт</td>
+                        <td class="day-names__name">Пт</td>
+                        <td class="day-names__name">Сб</td>
+                        <td class="day-names__name">Вс</td>
+                    </tr>
+
+                    <tr>
+                        <td v-for="day in firstWeek" 
+                            :class="day.disabled ? disDay : trueDay"
+                            :id="'day_'+day.id"
+                            :key="day.id"   
+                            @click="choosen"                     
+                            > 
+                            {{day.numOfMonth}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="day"
+                            v-for="day in secondWeek" 
+                            :id="'day_'+day.id"
+                            :key="day.id" 
+                            @click="choosen"
+                            >
+                            {{day.numOfMonth}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="day"
+                            v-for="day in thirdWeek" 
+                            :id="'day_'+day.id"
+                            :key="day.id" 
+                            @click="choosen" 
+                            >
+                            {{day.numOfMonth}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="day"
+                            v-for="day in fourthWeek" 
+                            :id="'day_'+day.id"
+                            :key="day.id" 
+                            @click="choosen" 
+                            >
+                            {{day.numOfMonth}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td v-for="day in fifthWeek" 
+                            :class="day.disabled ? disDay : trueDay"
+                            :id="'day_'+day.id"
+                            :key="day.id" 
+                            @click="choosen" 
+                            > 
+                            {{day.numOfMonth}}
+                        </td>
+                    </tr>
+                    <tr> 
+                        <td v-for="day in sixWeek" 
+                            :class="day.disabled ? disDay : trueDay"
+                            :id="'day_'+day.id"
+                            :key="day.id" 
+                            @click="choosen" 
+                            >
+                            {{day.numOfMonth}}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot class="button-wrapper">
+                    <tr class="button-row">
+                        <td class="cancel-button-wrapper">
+                            <button class="cancel-button" @click="$emit('close-calendar')">
+                                Отмена
+                            </button>
+                        </td>
+                        <td class="refresh-wrapper">
+                            <button class="refresh" :disabled="isDisabled" @click="sendData">Обновить</button>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -100,6 +138,7 @@ export default {
     data(){
         return {
             currDate: new Date(),
+            isDisabled: false,
             currMonth: 0,
             currYear: 0,
             countDaysInMonth: 0,
@@ -114,14 +153,15 @@ export default {
             fourthWeek: [],
             fifthWeek: [],
             sixWeek: [],
+            is30: true,
             trueDay: 'day',
             disDay: 'day1',
             month: [
-                'January', 'February',
-                'March', 'April', 'May', 
-                'June', 'July', 'August',
-                'September', 'October', 'November',
-                'December'
+                'Январь', 'Февраль',
+                'Март', 'Апрель', 'Май', 
+                'Июнь', 'Июль', 'Август',
+                'Сентябрь', 'Октябрь', 'Ноябрь',
+                'Декабрь'
             ],
         }
     },
@@ -129,6 +169,23 @@ export default {
         this.currMonth = this.currDate.getMonth();
         this.currYear = this.currDate.getFullYear();
         this.showMonth();
+        this.chooseToday();
+    },
+    updated(){
+        if(this.flagFirst >= 0 && this.flagLast !== 0){
+            document.getElementById('day_'+this.flagFirst).className = 'day-choose1';
+                for (let i = this.flagFirst+1; i<this.flagLast; i++){                
+                document.getElementById('day_'+i).className = 'day-between';
+            }
+            document.getElementById('day_'+this.flagLast).className = 'day-choose2';
+        } else if(this.flagFirst !== 0 && this.flagLast === 0 ){
+            document.getElementById('day_'+this.flagFirst).classList.value = 'day-choose';
+        } else if(this.flagFirst <= 0 && this.flagLast !== 0){
+            for (let i = 1; i<this.flagLast; i++){                
+                document.getElementById('day_'+i).className = 'day-between';
+            }
+            document.getElementById('day_'+this.flagLast).className = 'day-choose2';
+        }
     },
     methods: {
         showMonth(){
@@ -253,166 +310,240 @@ export default {
             }                   
         },
         nextMonth(){
+            document.getElementById('radio1').checked = true;
             if(this.currMonth !== 11)this.currMonth += 1;
             else {
                 this.currMonth = 0;
                 this.currYear +=1;     
-            }
-            this.showMonth();
-            if(document.querySelectorAll('.day-choose').length>0){
-                while(document.querySelectorAll('.day-choose').length>0){
-                    while(document.querySelectorAll('.day-between').length>0){
-                        document.querySelectorAll('.day-between')[0].className = 'day';    
-                    }
-                    document.querySelectorAll('.day-choose')[0].className = 'day';
-                }
-                this.flagFirst = 0;
-                this.flagLast = 0;
-            }
+            }        
+            this.cleanDate();            
+            this.showMonth();            
+            this.flagFirst = 0;
+            this.flagLast = 0;      
+            this.isDisabled = true;      
         },
         prevMonth(){
+            document.getElementById('radio1').checked = true;
             if(this.currMonth !== 0)this.currMonth -= 1;
             else {
                 this.currMonth = 11;
                 this.currYear -=1;     
-            }            
-            this.showMonth();
-            if(document.querySelectorAll('.day-choose').length>0){
-               while(document.querySelectorAll('.day-choose').length>0){
-                    while(document.querySelectorAll('.day-between').length>0){
-                        document.querySelectorAll('.day-between')[0].className = 'day';    
-                    }
-                    document.querySelectorAll('.day-choose')[0].className = 'day';
-                }
-                this.flagFirst = 0;
-                this.flagLast = 0;
             }
+            this.cleanDate();
+            this.showMonth();            
+            this.flagFirst = 0;
+            this.flagLast = 0;           
+            this.isDisabled = true; 
         }, 
         choosen(e){
-            if(e.target.className === "day" || e.target.className === "day-between"){
-                const choosenDay = parseInt(e.target.innerHTML);
+            if(e.target.classList.value === "day" || e.target.classList.value === "day-between"){
+                const choosenDay = parseInt(e.target.innerHTML);     
+                document.getElementById('radio1').checked = true;           
                 if(this.flagFirst === 0 && this.flagLast === 0){
+                    this.cleanDate();
                     this.flagFirst = choosenDay;
-                    e.target.className = "day-choose";
+                    e.target.classList.value = "day-choose";
+                    this.isDisabled = true;
                 } else if(this.flagFirst !== 0 && this.flagLast === 0){
+                    this.isDisabled = false;
+                    this.cleanDate();
                     if(this.flagFirst > choosenDay){
                         this.flagLast = this.flagFirst;
                         this.flagFirst = choosenDay;
-                        for(let i = this.flagFirst; i <this.flagLast; i++){
-                            document.getElementById('day_'+i).className = 'day-between';
+                        document.getElementById('day_'+this.flagFirst).className = 'day-choose1'
+                        for(let i = this.flagFirst+1; i <this.flagLast; i++){
+                            document.getElementById('day_'+i).classList.value = 'day-between';
                         }
-                        e.target.className = "day-choose";
+                        document.getElementById('day_'+this.flagLast).className = 'day-choose2'
                     } else if(this.flagFirst < choosenDay){
                         this.flagLast = choosenDay;
+                        document.getElementById('day_'+this.flagFirst).className = 'day-choose1'
                         for(let i = this.flagFirst+1; i <this.flagLast; i++){
-                            document.getElementById('day_'+i).className = 'day-between';
+                            document.getElementById('day_'+i).classList.value = 'day-between';
                         }
-                        e.target.className = "day-choose";
+                        document.getElementById('day_'+this.flagLast).className = 'day-choose2'
                     }
                 } else {
+                    if(document.querySelectorAll('.day-choose').length>0 || document.querySelectorAll('.day-choose1').length>0){
+                        this.cleanDate();
+                    }
                     if(this.flagFirst < choosenDay && this.flagLast > choosenDay) {
                         const between = Math.round((this.flagFirst+this.flagLast)/2);
                         if(between > choosenDay){
-                            document.querySelectorAll('.day-choose')[0].className = "day";
-                            for(let i = this.flagFirst+1; i<choosenDay; i++){
-                                document.querySelectorAll('.day-between')[0].className = "day";
-                                console.log('AAA');
-                            }
-                            document.querySelectorAll('.day-between')[0].className = "day-choose";
                             this.flagFirst = choosenDay;
-                        } else {
-                            document.querySelectorAll('.day-choose')[1].className = "day";
-                            for(let i = choosenDay+1; i<this.flagLast; i++){
-                                document.querySelectorAll('.day-between')[document.querySelectorAll('.day-between').length-1].className = "day";
+                            document.getElementById('day_'+this.flagFirst).className = 'day-choose1'
+                            for(let i = this.flagFirst+1; i <this.flagLast; i++){
+                                document.getElementById('day_'+i).classList.value = 'day-between';
                             }
-                            document.querySelectorAll('.day-between')[document.querySelectorAll('.day-between').length-1].className = "day-choose";
+                            document.getElementById('day_'+this.flagLast).className = 'day-choose2'
+                        } else {            
                             this.flagLast = choosenDay;
+                            document.getElementById('day_'+this.flagFirst).className = 'day-choose1'
+                            for(let i = this.flagFirst+1; i <this.flagLast; i++){
+                                document.getElementById('day_'+i).classList.value = 'day-between';
+                            }
+                            document.getElementById('day_'+this.flagLast).className = 'day-choose2'
                         }
                     } else {
-                        while(document.querySelectorAll('.day-between').length>0){
-                            document.querySelectorAll('.day-between')[0].className = 'day';    
-                        }
                         this.flagFirst = choosenDay;
-                        this.flagLast = 0;
-                        document.querySelectorAll('.day-choose')[0].className = 'day';    
-                        document.querySelectorAll('.day-choose')[0].className = 'day';    
-                        document.getElementById('day_'+choosenDay).className = 'day-choose';
+                        this.flagLast = 0;   
+                        this.isDisabled = true;
+                        document.getElementById('day_'+choosenDay).classList.value = 'day-choose';
                     }
                 }
             }
             
             
         },
-        cleanDate(){
-            while(document.querySelectorAll('.day-choose').length>0){
-                document.querySelectorAll('.day-choose')[0].className = 'day';
-            }
+        cleanDate(){                                    
             while(document.querySelectorAll('.day-between').length>0){
-                document.querySelectorAll('.day-between')[0].className = 'day';
-            }          
+                document.querySelectorAll('.day-between')[0].classList.value = "day";
+            }                   
+            if(document.querySelectorAll('.day-choose1').length>0){
+                document.querySelectorAll('.day-choose1')[0].classList.value = "day";
+            }
+            if(document.querySelectorAll('.day-choose').length>0){
+                document.querySelectorAll('.day-choose')[0].classList.value = "day";
+            }
+            if(document.querySelectorAll('.day-choose2').length>0){
+                document.querySelectorAll('.day-choose2')[0].classList.value = "day";
+            }
         },
         chooseToday(){
-            if(document.querySelectorAll('.day-choose').length !== 0){
-                this.cleanDate();
-            } 
+            this.cleanDate();
             this.currMonth = this.currDate.getMonth();
             this.currYear = this.currDate.getFullYear();
             this.showMonth();
             this.flagFirst = this.currDate.getDate();
-            this.flagLast = 0;
-             
-            document.getElementById('day_'+this.flagFirst).className = 'day-choose';
+            this.flagLast = 0;           
+            this.isDisabled = false;
         },
         chooseYesterday(){
-            //if(this.currDate.getDate()-1 === 0){
-            if(this.arrDayInMonth.length === 0){
-                if(this.currDate.getMonth() === 0){
-                //if(this.arrDayInMonth.length === 0){
+            this.cleanDate();  
+            this.isDisabled = false;
+            if(this.currDate.getDate()-1 === 0){     
+                if(this.currDate.getMonth() === 0){                
                     this.currMonth = 11;
-                    this.currYear -= -1;
+                    this.currYear -= 1;                    
                     this.showMonth();
                     this.flagFirst = 31;
                     this.flagLast = 0;
-                    this.cleanDate();
-                    document.getElementById('day_'+this.flagFirst).className = 'day-choose';
-                } else {
-                   
+                } else {                   
                     this.currMonth = this.currDate.getMonth()-1;
                     this.showMonth();
                     this.flagFirst = new Date(this.currYear, this.currMonth+1, 0).getDate();
                     this.flagLast = 0;
-                    if(document.querySelectorAll('.day-choose').length !== 0){
-                        this.cleanDate();
-                    }                
-                    document.getElementById('day_'+this.flagFirst).className = "day-choose";
-                    console.log(new Date(this.currYear, this.currMonth+1, 0).getDate());
+                    this.cleanDate();
                 }
             } else {
                 this.currMonth = this.currDate.getMonth();
                 this.currYear = this.currDate.getFullYear();
                 this.showMonth();
                 this.flagFirst = this.currDate.getDate()-1;
-                this.flagLast = 0;
-                this.cleanDate();
-                document.getElementById('day_'+this.flagFirst).className = 'day-choose';
+                this.flagLast = 0;            
             }
         },
         thisMonth(){            
+            this.isDisabled = false;
             if(document.querySelectorAll('.day-choose').length !== 0){
                 this.cleanDate();
             }            
-            this.flagFirst = 0;
-            this.flagLast = 0;
             this.currMonth = this.currDate.getMonth();
             this.currYear = this.currDate.getFullYear();
             this.showMonth();            
             this.flagFirst = 1;
-            this.flagLast = new Date(this.currYear, this.currMonth+1, 0).getDate();
-            document.getElementById('day_'+this.flagLast).className = 'day-choose';   
-            for (let i = this.flagLast-1; i>this.flagFirst; i--){
-                document.getElementById('day_'+i).className = 'day-between';
-            }     
-            document.getElementById('day_1').className = 'day-choose';   
+            this.flagLast = this.countDaysInMonth;
+        },
+        lastMonth(){
+            this.isDisabled = false;
+            if(this.currDate.getMonth() === 0){
+                this.currMonth = 11;
+                this.currYear -= 1;
+                if(document.querySelectorAll('.day-choose').length !== 0){
+                    this.cleanDate();
+                }
+                this.showMonth();
+                this.flagFirst = 1;
+                this.flagLast = 31;                                 
+            } else {
+                this.currMonth -= 1;
+                if(document.querySelectorAll('.day-choose').length !== 0){
+                    this.cleanDate();
+                }
+                this.showMonth();                 
+                this.flagFirst = 1;
+                this.flagLast = this.countDaysInMonth;                
+            }
+        },
+        startAgain(){
+            this.cleanDate();
+            this.flagFirst = 0;
+            this.isDisabled = true;
+        },
+        last7Days(){
+            this.isDisabled = false;
+            this.cleanDate();
+            if(this.currDate.getDate()-7 > 0){
+                this.currMonth = this.currDate.getMonth();
+                this.currYear = this.currDate.getFullYear();
+                this.showMonth();
+                this.flagFirst = this.currDate.getDate()-6;
+                this.flagLast = this.currDate.getDate();     
+                document.getElementById('day_'+this.flagFirst).className = 'day-choose1';
+                for (let i = this.flagFirst+1; i<this.flagLast; i++){                
+                    document.getElementById('day_'+i).className = 'day-between';
+                }
+                document.getElementById('day_'+this.flagLast).className = 'day-choose2';           
+            } else {
+                this.currMonth = this.currDate.getMonth();
+                this.currYear = this.currDate.getFullYear();
+                this.showMonth();
+                this.flagFirst = this.currDate.getDate()-6;
+                this.flagLast = this.currDate.getDate();
+                this.is30 = false;
+                for (let i = 1; i<this.flagLast; i++){                
+                    document.getElementById('day_'+i).className = 'day-between';
+                }
+                document.getElementById('day_'+this.flagLast).className = 'day-choose2';
+            }
+        },
+        last30Days(){
+            this.isDisabled = false;
+            this.cleanDate();
+            if(this.currDate.getDate()-30 > 0){
+                this.currMonth = this.currDate.getMonth();
+                this.currYear = this.currDate.getFullYear();
+                this.showMonth();
+                this.flagFirst = this.currDate.getDate()-29;
+                this.flagLast = this.currDate.getDate();     
+                document.getElementById('day_'+this.flagFirst).className = 'day-choose1';
+                for (let i = this.flagFirst+1; i<this.flagLast; i++){                
+                    document.getElementById('day_'+i).className = 'day-between';
+                }
+                document.getElementById('day_'+this.flagLast).className = 'day-choose2';                          
+            } else {
+                this.currMonth = this.currDate.getMonth();
+                this.currYear = this.currDate.getFullYear();
+                this.showMonth();
+                this.is30 = true;
+                this.flagFirst = this.currDate.getDate()-29;
+                this.flagLast = this.currDate.getDate();     
+                for (let i = 1; i<this.flagLast; i++){                
+                    document.getElementById('day_'+i).className = 'day-between';
+                }
+                document.getElementById('day_'+this.flagLast).className = 'day-choose2';                          
+            }
+        },
+        sendData(){
+            this.$emit('close-calendar');
+            this.$store.commit('addFilter', 
+                                {
+                                    year: this.currYear, 
+                                    month: this.currMonth, 
+                                    day: this.flagFirst, 
+                                    lastDay: this.flagLast
+                                },                                
+                              )
         }
     }
 }
