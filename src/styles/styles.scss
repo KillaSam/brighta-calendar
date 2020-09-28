@@ -370,30 +370,64 @@ html{
                     }     
                     .sign{
                         display: flex;
-                        align-items: center;                        
+                        align-items: center;   
+                        box-sizing: border-box;                     
                         &.user{
                             flex-direction: column;
                             align-items: stretch;
                             justify-content: center;
+                            padding-left: 15px;
                             .mail{
                                 font-weight: 300;
                                 font-size: 13px;
                                 line-height: 130%;
                             }
+                            &:hover{                            
+                                cursor: pointer;
+                                border-top: 2px solid #EBEEF3;
+                                border-bottom: 2px solid #EBEEF3;
+                                border-left: 2px solid #EBEEF3;
+                                &+.sign{
+                                    cursor: pointer;
+                                    border-top: 2px solid #EBEEF3;
+                                    border-bottom: 2px solid #EBEEF3;
+                                    &+.sign{
+                                        cursor: pointer;
+                                        border-top: 2px solid #EBEEF3;
+                                        border-bottom: 2px solid #EBEEF3;
+                                        &+.sign{
+                                            cursor: pointer;
+                                            border-top: 2px solid #EBEEF3;
+                                            border-bottom: 2px solid #EBEEF3;
+                                            &+.sign{
+                                                cursor: pointer;
+                                                border-top: 2px solid #EBEEF3;
+                                                border-bottom: 2px solid #EBEEF3;
+                                                border-right: 2px solid #EBEEF3;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
                         }
                         &.hide{
                             &::before{
                                 content: '';
-                                position: absolute;
+                                display: block;
+                                position: relative;
                                 background: linear-gradient(to left, #FFF, #FFF 5%, #ffffff00 80%);
                                 width: 170px;
                                 height: 40px;
+                                margin-right: -170px;
                             }
                         }
-                        &.right{
-                            justify-content: flex-end;
-                        }
+                        
                     }       
+                    .right{
+                        display: flex;
+                        align-items: center;    
+                        justify-content: flex-end;
+                    }
                     .sign1{
                         display: flex;
                         align-items: center;                        
@@ -428,10 +462,10 @@ html{
 .calendar-wrapper{
     top: 0;
     left: 0;
-    position: absolute;
+    position: fixed;
     width: 100%;
-    height: 116%;
-    backdrop-filter: blur(5px);
+    height: 100%;
+    backdrop-filter: blur(4px);
     z-index: 10000;
     display: flex;
     justify-content: center;
