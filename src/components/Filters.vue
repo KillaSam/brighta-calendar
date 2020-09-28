@@ -2,8 +2,8 @@
     <div class="mail-section__filter__filters">
         <div class="line"></div>
         <div class="wrapper">
-            <div class="containers" v-for="(filter, id) in filters" :key="id" @click="sendFilter(filter)">
-                <div class="date">
+            <div class="containers" v-for="(filter, id) in filters" :key="id">
+                <div class="date" @click="sendFilter(filter)">
                     <p class="first" v-if ="filter.firstDay >= 0">{{filter.firstDay}} {{month[filter.firstMonth]}}</p>
                     <p class="first" v-else-if="filter.firstMonth !== 0"
                                     >
@@ -48,7 +48,7 @@ export default {
         deleteFilter(id){
             this.$store.commit('deleteFilter', id)
         }, 
-        sendFilter(filter){
+        async sendFilter(filter){
             let phrase;
             if(filter.firstDay <= 0){
                 phrase = (new Date(filter.firstYear, filter.firstMonth, 0).getDate()+filter.firstDay) + ' ' + this.month[filter.firstMonth-1] + ' - '+ filter.lastDay+ ' ' + this.month[filter.firstMonth] + ' ' +filter.firstYear+' г.';
@@ -58,6 +58,19 @@ export default {
                 phrase = filter.firstDay+ ' ' + this.month[filter.firstMonth] + ' ' +filter.firstYear +' г.';
             }
             this.$store.commit('changeFilter', phrase);
+            try{
+                const response = await fetch('http://fake-url.com', {
+                    method: 'POST',
+                    body: JSON.stringify(phrase),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const jsonRes = await response.json();
+                alert('Передача данных на фейк: ', JSON.stringify(jsonRes));
+            } catch(e){
+                alert('Error: '+e);
+            }
         }
     }
 }

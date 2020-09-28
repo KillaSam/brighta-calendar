@@ -102,7 +102,8 @@ html{
 
 .main-content{    
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between;    
+    overflow: hidden;
     .aside-bar{
         &__select{
             height: 54px;
@@ -181,6 +182,7 @@ html{
     }
     .mail-section{
         width: 1269px;
+        max-height: 979px;
         &__filter{
             width: 100%;
             background-color: #FFFFFF;
@@ -332,6 +334,80 @@ html{
             border-radius: 10px;
             background-color: #FFFFFF;
             overflow: hidden; 
+            &__wrapper{
+                width: 1204px;
+                height: 100%;
+                display: grid;
+                margin: auto;
+                margin: auto;
+                grid-template-rows: 62px repeat(13, auto);
+                grid-template-columns: auto;
+                .wrapper{
+                    width: 100%;
+                    height: 100%;                    
+                    display: grid;
+                    grid-template-columns: 54px 218px 175px 200px 200px 220px 94px auto;
+                    grid-template-rows: auto;
+                    font-weight: 500;
+                    font-size: 15px;
+                    line-height: 130%;
+                    &.header{                        
+                        border-bottom: 1px solid #E7ECF1;                        
+                        font-weight: bold;
+                        font-size: 13px;
+                        line-height: 130%;
+                    }
+                    .first{
+                        display: flex;
+                        align-items: center;
+                        .circle{
+                            width: 26px;
+                            height: 26px;
+                            border: 2px solid rgba(131, 142, 157, 0.3);
+                            box-sizing: border-box;
+                            border-radius: 50%;
+                        }
+                    }     
+                    .sign{
+                        display: flex;
+                        align-items: center;                        
+                        &.user{
+                            flex-direction: column;
+                            align-items: stretch;
+                            justify-content: center;
+                            .mail{
+                                font-weight: 300;
+                                font-size: 13px;
+                                line-height: 130%;
+                            }
+                        }
+                        &.hide{
+                            &::before{
+                                content: '';
+                                position: absolute;
+                                background: linear-gradient(to left, #FFF, #FFF 5%, #ffffff00 80%);
+                                width: 170px;
+                                height: 40px;
+                            }
+                        }
+                        &.right{
+                            justify-content: flex-end;
+                        }
+                    }       
+                    .sign1{
+                        display: flex;
+                        align-items: center;                        
+                        &>p{
+                            font-weight: 500;
+                            font-size: 13px;
+                            line-height: 130%;
+                            display: flex;
+                            justify-content: space-around;
+                            width: 100%;
+                        }
+                    }
+                }
+            }
         }
     }
     .fake-slider{

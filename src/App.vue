@@ -91,7 +91,386 @@
             <Filters v-if="this.$store.state.filters.length > 0"/>
           </div>
           <div class="mail-section__mails">
-            
+            <div class="mail-section__mails__wrapper">
+              <header class="wrapper header">
+                <div class="first">
+                  <div class="circle"></div>
+                </div>
+                <div class="sign">
+                  <p>Пользователь</p>
+                </div>
+                <div class="sign">
+                  <p>Дата регистрации</p>
+                </div>
+                <div class="sign">
+                  <p >Последняя активность</p>
+                </div>
+                <div class="sign">
+                  <p>Последнее действие</p>
+                </div>
+                <div class="sign">
+                  <p>Продукт</p>
+                </div>
+                <div class="sign1">
+                  <p>Отобразить</p>
+                </div>
+                <div class="sign1">
+                  <p>15 <span class="flag">&lsaquo;</span></p>
+                </div>
+              </header>
+              <div class="wrapper">
+                <div class="first">
+                  <div class="circle"></div>
+                </div>
+                <div class="sign user">
+                  <p>User1</p>
+                  <p class="mail">user@user.com</p>
+                </div>
+                 <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign hide">
+                  <p>view_landing_course1</p>
+                </div>
+                <div class="sign hide">
+                  <p>Как наладить отнош</p>
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Pen.svg" alt="pen">
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Bucket.svg" alt="bucket">
+                </div>
+              </div>
+              <div class="wrapper">
+                <div class="first">
+                  <div class="circle"></div>
+                </div>
+                <div class="sign user">
+                  <p>User1</p>
+                  <p class="mail">user@user.com</p>
+                </div>
+                 <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign hide">
+                  <p>view_landing_course1</p>
+                </div>
+                <div class="sign hide">
+                  <p>Как наладить отнош</p>
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Pen.svg" alt="pen">
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Bucket.svg" alt="bucket">
+                </div>
+              </div>
+              <div class="wrapper">
+                <div class="first">
+                  <div class="circle"></div>
+                </div>
+                <div class="sign user">
+                  <p>User1</p>
+                  <p class="mail">user@user.com</p>
+                </div>
+                 <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign hide">
+                  <p>view_landing_course1</p>
+                </div>
+                <div class="sign hide">
+                  <p>Как наладить отнош</p>
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Pen.svg" alt="pen">
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Bucket.svg" alt="bucket">
+                </div>
+              </div>
+              <div class="wrapper">
+                <div class="first">
+                  <div class="circle"></div>
+                </div>
+                <div class="sign user">
+                  <p>User1</p>
+                  <p class="mail">user@user.com</p>
+                </div>
+                 <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign hide">
+                  <p>view_landing_course1</p>
+                </div>
+                <div class="sign hide">
+                  <p>Как наладить отнош</p>
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Pen.svg" alt="pen">
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Bucket.svg" alt="bucket">
+                </div>
+              </div>
+              <div class="wrapper">
+                <div class="first">
+                  <div class="circle"></div>
+                </div>
+                <div class="sign user">
+                  <p>User1</p>
+                  <p class="mail">user@user.com</p>
+                </div>
+                 <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign hide">
+                  <p>view_landing_course1</p>
+                </div>
+                <div class="sign hide">
+                  <p>Как наладить отнош</p>
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Pen.svg" alt="pen">
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Bucket.svg" alt="bucket">
+                </div>
+              </div>
+              <div class="wrapper">
+                <div class="first">
+                  <div class="circle"></div>
+                </div>
+                <div class="sign user">
+                  <p>User1</p>
+                  <p class="mail">user@user.com</p>
+                </div>
+                 <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign hide">
+                  <p>view_landing_course1</p>
+                </div>
+                <div class="sign hide">
+                  <p>Как наладить отнош</p>
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Pen.svg" alt="pen">
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Bucket.svg" alt="bucket">
+                </div>
+              </div>
+              <div class="wrapper">
+                <div class="first">
+                  <div class="circle"></div>
+                </div>
+                <div class="sign user">
+                  <p>User1</p>
+                  <p class="mail">user@user.com</p>
+                </div>
+                 <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign hide">
+                  <p>view_landing_course1</p>
+                </div>
+                <div class="sign hide">
+                  <p>Как наладить отнош</p>
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Pen.svg" alt="pen">
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Bucket.svg" alt="bucket">
+                </div>
+              </div>
+              <div class="wrapper">
+                <div class="first">
+                  <div class="circle"></div>
+                </div>
+                <div class="sign user">
+                  <p>User1</p>
+                  <p class="mail">user@user.com</p>
+                </div>
+                 <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign hide">
+                  <p>view_landing_course1</p>
+                </div>
+                <div class="sign hide">
+                  <p>Как наладить отнош</p>
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Pen.svg" alt="pen">
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Bucket.svg" alt="bucket">
+                </div>
+              </div>
+              <div class="wrapper">
+                <div class="first">
+                  <div class="circle"></div>
+                </div>
+                <div class="sign user">
+                  <p>User1</p>
+                  <p class="mail">user@user.com</p>
+                </div>
+                 <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign hide">
+                  <p>view_landing_course1</p>
+                </div>
+                <div class="sign hide">
+                  <p>Как наладить отнош</p>
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Pen.svg" alt="pen">
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Bucket.svg" alt="bucket">
+                </div>
+              </div>
+              <div class="wrapper">
+                <div class="first">
+                  <div class="circle"></div>
+                </div>
+                <div class="sign user">
+                  <p>User1</p>
+                  <p class="mail">user@user.com</p>
+                </div>
+                 <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign hide">
+                  <p>view_landing_course1</p>
+                </div>
+                <div class="sign hide">
+                  <p>Как наладить отнош</p>
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Pen.svg" alt="pen">
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Bucket.svg" alt="bucket">
+                </div>
+              </div>
+              <div class="wrapper">
+                <div class="first">
+                  <div class="circle"></div>
+                </div>
+                <div class="sign user">
+                  <p>User1</p>
+                  <p class="mail">user@user.com</p>
+                </div>
+                 <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign hide">
+                  <p>view_landing_course1</p>
+                </div>
+                <div class="sign hide">
+                  <p>Как наладить отнош</p>
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Pen.svg" alt="pen">
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Bucket.svg" alt="bucket">
+                </div>
+              </div>
+              <div class="wrapper">
+                <div class="first">
+                  <div class="circle"></div>
+                </div>
+                <div class="sign user">
+                  <p>User1</p>
+                  <p class="mail">user@user.com</p>
+                </div>
+                 <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign hide">
+                  <p>view_landing_course1</p>
+                </div>
+                <div class="sign hide">
+                  <p>Как наладить отнош</p>
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Pen.svg" alt="pen">
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Bucket.svg" alt="bucket">
+                </div>
+              </div>
+              <div class="wrapper">
+                <div class="first">
+                  <div class="circle"></div>
+                </div>
+                <div class="sign user">
+                  <p>User1</p>
+                  <p class="mail">user@user.com</p>
+                </div>
+                 <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign">
+                  <p>Февраль 10, 2020</p>
+                </div>
+                <div class="sign hide">
+                  <p>view_landing_course1</p>
+                </div>
+                <div class="sign hide">
+                  <p>Как наладить отнош</p>
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Pen.svg" alt="pen">
+                </div>
+                <div class="sign right">
+                  <img src="./styles/img/Bucket.svg" alt="bucket">
+                </div>
+              </div>
+              
+            </div>
           </div>
         </section>
         <section class="fake-slider">
