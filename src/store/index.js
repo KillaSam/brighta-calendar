@@ -9,6 +9,7 @@ export default new Vuex.Store({
     currFilter: ''
   },
   mutations: {
+    // добавление нового фильтра 
     addFilter(state, datas){
       if(datas.day <= 0){
         
@@ -36,9 +37,13 @@ export default new Vuex.Store({
         console.log(state.filters);
       }
     }, 
+
+    // удаление фильтра
     deleteFilter(state, id){
       state.filters.splice(id, 1);
     },
+
+    // применение текущего фильтра
     changeFilter(state, phrase){
       state.currFilter = phrase;
     }    

@@ -109,7 +109,7 @@ html{
             height: 54px;
             width: 226px;
             background-color: #FFFFFF;
-            box-shadow: 0px 10px 40px rgba(128, 158, 191, 0.2);
+            box-shadow: 0px 10px 40px #809ebf33;
             border-radius: 10px;
             margin-bottom: 11px;
             display: flex;
@@ -198,7 +198,6 @@ html{
                 width: 1189px;
                 &__filter-options{
                     display: flex;
-
                     .calendar{
                         display: flex;
                         justify-content: space-between;
@@ -220,15 +219,12 @@ html{
                                 width: 190px;
                             }
                         }
-                        &:hover{
+                        &:hover{                            
+                            color: #FF7439;
                             .my-calendar{
                                 background-image: url('./img/Calendar_hover.jpg'); 
                             }
-                            .descriptions{
-                                color: #FF7439;
-                            }   
                             .flag{
-                                color: #FF7439;
                                 transform: rotate(90deg);
                             }
                         }
@@ -356,6 +352,11 @@ html{
                         font-weight: bold;
                         font-size: 13px;
                         line-height: 130%;
+                        .sign{
+                            &.user-sign{
+                                padding-left: 15px;
+                            }
+                        }
                     }
                     .first{
                         display: flex;
@@ -367,7 +368,7 @@ html{
                             box-sizing: border-box;
                             border-radius: 50%;
                         }
-                    }     
+                    }                         
                     .sign{
                         display: flex;
                         align-items: center;   
@@ -377,30 +378,36 @@ html{
                             align-items: stretch;
                             justify-content: center;
                             padding-left: 15px;
+                            box-sizing: border-box;
                             .mail{
                                 font-weight: 300;
                                 font-size: 13px;
                                 line-height: 130%;
                             }
-                            &:hover{                            
+                            &:hover{                
+                                box-sizing: border-box;            
                                 cursor: pointer;
                                 border-top: 2px solid #EBEEF3;
                                 border-bottom: 2px solid #EBEEF3;
                                 border-left: 2px solid #EBEEF3;
                                 &+.sign{
                                     cursor: pointer;
+                                    box-sizing: border-box;
                                     border-top: 2px solid #EBEEF3;
                                     border-bottom: 2px solid #EBEEF3;
                                     &+.sign{
                                         cursor: pointer;
+                                        box-sizing: border-box;
                                         border-top: 2px solid #EBEEF3;
                                         border-bottom: 2px solid #EBEEF3;
                                         &+.sign{
                                             cursor: pointer;
+                                            box-sizing: border-box;
                                             border-top: 2px solid #EBEEF3;
                                             border-bottom: 2px solid #EBEEF3;
                                             &+.sign{
                                                 cursor: pointer;
+                                                box-sizing: border-box;
                                                 border-top: 2px solid #EBEEF3;
                                                 border-bottom: 2px solid #EBEEF3;
                                                 border-right: 2px solid #EBEEF3;
@@ -471,7 +478,6 @@ html{
     justify-content: center;
     align-items: center;
     .calendar-main{
-        width: 500px;
         height: 332px;
         display: flex;
         justify-content: space-between;
@@ -549,7 +555,7 @@ html{
             height: 100%;
             box-shadow: 0px 10px 40px rgba(128, 158, 191, 0.2);
             border-radius: 10px;
-            margin-left: 10px;
+            margin-left: 8px;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
@@ -679,10 +685,19 @@ html{
     font-weight: normal;
     font-size: 12px;
     line-height: 15px;
+    position: relative;
+    z-index: 10000;
     &:hover{
-        background-image: url('./img/Ellipse_hover.svg');
-        background-repeat: no-repeat;
-        background-position: center;
+        &::before{
+            content: '';
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            background-color: #DFE9F3;
+            border-radius: 50%;
+            z-index: -1;
+    
+        }
     }
 }
 
@@ -691,9 +706,18 @@ html{
     font-size: 12px;
     line-height: 15px;
     color: #FFFFFF;
-    background-image: url('./img/Ellipse.svg');
-    background-repeat: no-repeat;    
-    background-position: center;
+    position: relative;
+    z-index: 10000;
+    &::before{
+        content: '';
+        position: absolute;
+        width: 28px;
+        height: 28px;
+        background-color: #FF7439;
+        border-radius: 50%;
+        z-index: -1;
+
+    }
 }
 
 .day-choose1{

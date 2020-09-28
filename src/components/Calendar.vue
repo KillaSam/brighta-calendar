@@ -1,3 +1,6 @@
+/* Знаю, что очень "длинный" компонент, но написан своими руками без посторонней помощи 
+или библиотек. Над каждой функцией комменты, но по сути своей код и без них понятен */
+
 <template>
     <div class="calendar-wrapper">
         <div class="calendar-main">
@@ -12,8 +15,7 @@
                 </div>
                 <div class="radio-wrapper">
                     <input type="radio" name="radio" id="radio3" @click="chooseYesterday">           
-                    <label for="radio3">Вчера</label>      
-                     
+                    <label for="radio3">Вчера</label>                           
                 </div>
                 <div class="radio-wrapper">
                     <input type="radio" name="radio" id="radio4" @click="last7Days">   
@@ -35,12 +37,19 @@
             <table class="one-calendar">
                 <thead class="header-wrapper">            
                     <tr class="header">
-                        <td class="arrow" @click="prevMonth()"><div class="circle"><p class="sign">‹</p></div></td>
-                        <td colspan="5" valign="middle" class="name-month">
-                            <span id="month-cal">{{month[currMonth]}}</span>,  
-                            {{currYear}}
+                        <td class="arrow" @click="prevMonth()">
+                            <div class="circle">
+                                <p class="sign">‹</p>
+                            </div>
                         </td>
-                        <td class="arrow" @click="nextMonth()"><div class="circle"><p class="sign">›</p></div></td>
+                        <td colspan="5" valign="middle" class="name-month">
+                            <span id="month-cal">{{month[currMonth]}}</span>, {{currYear}}
+                        </td>
+                        <td class="arrow" @click="nextMonth()">
+                            <div class="circle">
+                                <p class="sign">›</p>
+                            </div>
+                        </td>
                     </tr>
                 </thead>
                 <tbody class="calendar-numbers">
@@ -53,10 +62,9 @@
                         <td class="day-names__name">Сб</td>
                         <td class="day-names__name">Вс</td>
                     </tr>
-
                     <tr>
                         <td v-for="day in firstWeek" 
-                            :class="day.disabled ? disDay : trueDay"
+                            :class="day.disabled ? 'day1' : 'day'"
                             :id="'day_'+day.id"
                             :key="day.id"   
                             @click="choosen"                     
@@ -96,7 +104,7 @@
                     </tr>
                     <tr>
                         <td v-for="day in fifthWeek" 
-                            :class="day.disabled ? disDay : trueDay"
+                            :class="day.disabled ? 'day1' : 'day'"
                             :id="'day_'+day.id"
                             :key="day.id" 
                             @click="choosen" 
@@ -106,7 +114,7 @@
                     </tr>
                     <tr> 
                         <td v-for="day in sixWeek" 
-                            :class="day.disabled ? disDay : trueDay"
+                            :class="day.disabled ? 'day1' : 'day'"
                             :id="'day_'+day.id"
                             :key="day.id" 
                             @click="choosen" 
@@ -123,7 +131,9 @@
                             </button>
                         </td>
                         <td class="refresh-wrapper">
-                            <button class="refresh" :disabled="isDisabled" @click="sendData">Обновить</button>
+                            <button class="refresh" :disabled="isDisabled" @click="sendData">
+                                Обновить
+                            </button>
                         </td>
                     </tr>
                 </tfoot>
@@ -172,7 +182,7 @@ export default {
         this.chooseToday();
     },
     updated(){
-        if(this.flagFirst >= 0 && this.flagLast !== 0){
+        if(this.flagFirst > 0 && this.flagLast !== 0){
             document.getElementById('day_'+this.flagFirst).className = 'day-choose1';
                 for (let i = this.flagFirst+1; i<this.flagLast; i++){                
                 document.getElementById('day_'+i).className = 'day-between';
@@ -188,6 +198,8 @@ export default {
         }
     },
     methods: {
+
+        // функция показа выбранного месяца на календаре
         showMonth(){
             const dayIn = new Date(this.currYear, this.currMonth, 1).getDay();
             this.arrDayInMonth = []; 
@@ -309,6 +321,8 @@ export default {
                 }
             }                   
         },
+
+        //функция для переключения на следующий месяц
         nextMonth(){
             document.getElementById('radio1').checked = true;
             if(this.currMonth !== 11)this.currMonth += 1;
@@ -322,6 +336,8 @@ export default {
             this.flagLast = 0;      
             this.isDisabled = true;      
         },
+
+        // функция для переключения на прошлый месяц
         prevMonth(){
             document.getElementById('radio1').checked = true;
             if(this.currMonth !== 0)this.currMonth -= 1;
@@ -335,6 +351,8 @@ export default {
             this.flagLast = 0;           
             this.isDisabled = true; 
         }, 
+
+        // функция на выбор произвольного срока фильтрации в календаре
         choosen(e){
             if(e.target.classList.value === "day" || e.target.classList.value === "day-between"){
                 const choosenDay = parseInt(e.target.innerHTML);     
@@ -395,6 +413,8 @@ export default {
             
             
         },
+
+        // функция очистки выборки на календаре
         cleanDate(){                                    
             while(document.querySelectorAll('.day-between').length>0){
                 document.querySelectorAll('.day-between')[0].classList.value = "day";
@@ -409,6 +429,16 @@ export default {
                 document.querySelectorAll('.day-choose2')[0].classList.value = "day";
             }
         },
+        
+        // Сброс до установки произвольного срока
+        startAgain(){
+            this.cleanDate();
+            this.flagFirst = 0;
+            this.isDisabled = true;
+        },
+        //А далее по кнопкам в меню
+
+        //выбор текущей дня
         chooseToday(){
             this.cleanDate();
             this.currMonth = this.currDate.getMonth();
@@ -418,6 +448,8 @@ export default {
             this.flagLast = 0;           
             this.isDisabled = false;
         },
+
+        //выбор вчерашнего дня
         chooseYesterday(){
             this.cleanDate();  
             this.isDisabled = false;
@@ -443,6 +475,8 @@ export default {
                 this.flagLast = 0;            
             }
         },
+
+        // выбор всего текущего месяца
         thisMonth(){            
             this.isDisabled = false;
             if(document.querySelectorAll('.day-choose').length !== 0){
@@ -454,6 +488,8 @@ export default {
             this.flagFirst = 1;
             this.flagLast = this.countDaysInMonth;
         },
+
+        // выбор всего прошлого месяца
         lastMonth(){
             this.isDisabled = false;
             if(this.currDate.getMonth() === 0){
@@ -472,11 +508,8 @@ export default {
                 this.flagLast = this.countDaysInMonth;                
             }
         },
-        startAgain(){
-            this.cleanDate();
-            this.flagFirst = 0;
-            this.isDisabled = true;
-        },
+
+        // выбор 7 прошлых дней
         last7Days(){
             this.isDisabled = false;
             this.cleanDate();
@@ -504,6 +537,8 @@ export default {
                 document.getElementById('day_'+this.flagLast).className = 'day-choose2';
             }
         },
+        
+        // выбор прошлых 30 дней
         last30Days(){
             this.isDisabled = false;
             this.cleanDate();
@@ -531,6 +566,8 @@ export default {
                 document.getElementById('day_'+this.flagLast).className = 'day-choose2';                          
             }
         },
+
+        // создание нового фильтра
         sendData(){
             this.$emit('close-calendar');
             this.$store.commit('addFilter', 

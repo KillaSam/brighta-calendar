@@ -1,10 +1,14 @@
+/* Конечно я почти уверен что передал данные не там, где нужно, 
+но по заданию не было написано где именно так что по сути данные подготовил */
+
+
 <template>
     <div class="mail-section__filter__filters">
         <div class="line"></div>
         <div class="wrapper">
             <div class="containers" v-for="(filter, id) in filters" :key="id">
                 <div class="date" @click="sendFilter(filter)">
-                    <p class="first" v-if ="filter.firstDay >= 0">{{filter.firstDay}} {{month[filter.firstMonth]}}</p>
+                    <p class="first" v-if ="filter.firstDay > 0">{{filter.firstDay}} {{month[filter.firstMonth]}}</p>
                     <p class="first" v-else-if="filter.firstMonth !== 0"
                                     >
                                     {{new Date(filter.firstYear, filter.firstMonth, 0).getDate()+filter.firstDay}} 
@@ -41,13 +45,12 @@ export default {
     mounted() {
         this.filters = this.$store.state.filters;
     },
-    updated(){
-        this.filters = this.$store.state.filters;
-    },
     methods:{
+        // удаление фильтра
         deleteFilter(id){
             this.$store.commit('deleteFilter', id)
         }, 
+        // отправка данных в текущий фильтр и на сервер
         async sendFilter(filter){
             let phrase;
             if(filter.firstDay <= 0){

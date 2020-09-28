@@ -1,3 +1,6 @@
+/* По сути своей этот компонент - верстка в основном, 
+с добавлением динамических компонентов (Filters, Calendar) */
+
 <template>
   <body id="app">
     <header class="header-page">
@@ -96,7 +99,7 @@
                 <div class="first">
                   <div class="circle"></div>
                 </div>
-                <div class="sign user">
+                <div class="sign user-sign">
                   <p>Пользователь</p>
                 </div>
                 <div class="sign">
@@ -150,8 +153,7 @@
         </section>
         <section class="fake-slider">
           <div class="slider"></div>
-        </section>
-      
+        </section>      
     </main>
     <Calendar v-if="calendarShow" @close-calendar="calendarShow = false"/>
   </body>
@@ -171,8 +173,6 @@ export default {
     return{
       calendarShow: false
     }
-  },
-  methods: {
   }
 }
 </script>
